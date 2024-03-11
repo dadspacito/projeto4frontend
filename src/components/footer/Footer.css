@@ -1,0 +1,20 @@
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+
+.trivia-box {
+  width: fit-content; /* Adjust as needed */
+  height: fit-content; /* Adjust as needed */
+  margin: 0 auto; /* Center the box */
+}
+
+.trivia-box p {
+  font-size: 0.8em;
+  line-height: 1.4;
+}

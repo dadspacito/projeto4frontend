@@ -1,13 +1,83 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(158, 106, 206);
+  user-select: none;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.page-wrap {
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.welcome-logo {
+  font-size: 1.3em;
+  margin: 0 auto;
+  padding: 20px;
+  opacity: 0.5;
+  background-image: url("logo1024.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.welcome-message {
+  font-size: 1em;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+}
+
+/* Paw Button CSS */
+.paw-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fbd400; /* Yellow */
+  border: none;
+  border-radius: 50px;
+  color: #ffffff; /* White */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.paw-button::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 30px;
+  height: 30px;
+  background-color: #fbd400; /* Yellow */
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.paw-button::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 20%;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff; /* White */
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.paw-button:hover {
+  background-color: #f9a825; /* Darker Yellow */
 }
