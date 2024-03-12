@@ -36,9 +36,9 @@ function RegistryForm() {
   };
 
   return (
-    <a className="bm-item menu-item" onClick={openForm}>
-      New Purr-ticipant{" "}
-    </a>
+    <div>
+      <button onClick={openForm()}>Abrir formulário</button>
+    </div>
   );
 }
 

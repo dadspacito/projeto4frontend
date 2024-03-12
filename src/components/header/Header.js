@@ -5,6 +5,9 @@ import { userStore } from "../../stores/UserStore.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
+//////////////////  FALTA LOGICA DE LOGOUT
+//////////////////  FALTA LOGICA DE Carregar foto de perfil
+
 function LogoutButton() {
   const navigate = useNavigate();
   function handleLogoutClick() {
@@ -25,7 +28,6 @@ function Header() {
   const navigate = useNavigate();
 
   function handleUserClick() {
-    //navigate("/profile");
     navigate("/profile", { replace: true });
     console.log("User clicked on the profile icon");
   }
@@ -33,7 +35,7 @@ function Header() {
   const username = userStore((state) => state.username);
   console.log(username);
   // teste de foto
-  let usernameProfile = "https://www.w3schools.com/howto/img_avatar.png";
+  let usernameProfile = "https://cataas.com/cat";
 
   return (
     <div className="header">
@@ -44,7 +46,7 @@ function Header() {
           onClick={handleUserClick}
         />
         <span>{username}</span>
-      </div>
+      </div>{" "}
       <LogoutButton />
     </div>
   );

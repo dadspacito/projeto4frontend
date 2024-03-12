@@ -13,22 +13,18 @@
 .profile-icon {
   position: relative;
   left: 20%;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
 }
 
 .profile-icon img {
+  object-fit: cover;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
   box-shadow: 5px -1px 3px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
 }
-
 .profile-icon img:hover {
   opacity: 0.6;
   cursor: pointer;
@@ -36,6 +32,7 @@
 
 .profile-icon span {
   font-size: 1rem;
+  padding-left: 5px;
 }
 
 /* Botão de logout */

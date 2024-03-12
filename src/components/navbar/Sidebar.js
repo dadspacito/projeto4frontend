@@ -4,6 +4,10 @@ import "./Sidebar.css";
 import RegistryForm from "../forms/RegistryForm";
 
 export default (props) => {
+  const openRegistryForm = () => {
+    <RegistryForm />;
+  };
+
   return (
     <Menu>
       <a className="menu-item" href="/home">
@@ -15,7 +19,9 @@ export default (props) => {
       <a className="menu-item" href="/profile">
         My Paw-file{" "}
       </a>
-      <RegistryForm />
+      <a className="menu-item" onClick={openRegistryForm()}>
+        New Purr-ticipant{" "}
+      </a>
     </Menu>
   );
 };
