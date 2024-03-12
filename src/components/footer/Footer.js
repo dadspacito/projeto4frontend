@@ -4,10 +4,9 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="Footer">
-      <RandomCatFact />
-
-      <p>© 2024 Scrum Purrfect</p>
+    <div className="footer">
+      <RandomCatFact />© {new Date().getFullYear()} Scrum Purrfect - Pawsitively
+      Agile. All rights reserved.
     </div>
   );
 }

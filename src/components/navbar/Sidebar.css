@@ -2,7 +2,7 @@
 .bm-burger-button {
   position: fixed;
   width: 36px;
-  height: 30px;
+  height: 24px;
   left: 36px;
   top: 36px;
 }
@@ -51,6 +51,7 @@
 /* Individual item */
 .bm-item {
   display: inline-block;
+  cursor: pointer;
 }
 /* Styling of overlay */
 .bm-overlay {

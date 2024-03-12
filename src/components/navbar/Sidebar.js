@@ -1,6 +1,7 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./Sidebar.css";
+import RegistryForm from "../forms/RegistryForm";
 
 export default (props) => {
   return (
@@ -8,12 +9,13 @@ export default (props) => {
       <a className="menu-item" href="/home">
         Home
       </a>
-      <a className="menu-item" href="/activity">
-        Activity
+      <a className="menu-item" href="/scrumboard">
+        Scratch Board
       </a>
       <a className="menu-item" href="/profile">
-        Profile{" "}
+        My Paw-file{" "}
       </a>
+      <RegistryForm />
     </Menu>
   );
 };

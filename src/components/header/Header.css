@@ -1,0 +1,74 @@
+/* HEADER GERAL */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  font-weight: bold;
+}
+
+/*ícone e username */
+
+.profile-icon {
+  position: relative;
+  left: 20%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  box-shadow: 5px -1px 3px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.profile-icon img:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.profile-icon span {
+  font-size: 1rem;
+}
+
+/* Botão de logout */
+
+.logout-button {
+  background-color: #e0e0e065;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 10%;
+  border-radius: 20px;
+  padding: 10px 15px;
+  transition: all 0.5s ease;
+  font-weight: bold;
+  box-shadow: 5px -1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Ícone do logout  */
+
+.logout-button:hover {
+  background-color: #f0f0f0d2;
+  cursor: pointer;
+}
+
+.logout-button .logout-icon {
+  color: #000;
+}
+
+.logout-button:hover .logout-icon {
+  color: #f00;
+}
+.logout-button:active {
+  box-shadow: 5px 0 1px 0 rgba(0, 0, 0, 0.2); /* Sombra mais "próxima" para simular o botão sendo pressionado */
+  transform: translateY(2px); /* Move o botão ligeiramente para baixo */
+}

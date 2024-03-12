@@ -7,7 +7,10 @@ import { userStore } from "../stores/UserStore.js";
 
 import Swal from "sweetalert2";
 
-// Define a função que mostra o formulário de login
+// Função que exibe um formulário de login usando SweetAlert2
+// O parâmetro `navigate` é uma função que pode ser usada para navegar para uma nova rota
+// O parâmetro `setUsername` é uma função que pode ser usada para atualizar o nome de utilizador no estado global
+
 export function showLoginForm(navigate, setUsername) {
   Swal.fire({
     title: "Login Form",
@@ -84,9 +87,16 @@ function Login() {
   //   //setUsername(username);
 
   return (
-    <div>
+    <div className="login">
       <div className="welcome-logo"></div>
       <div className="welcome-message">
+        <p>
+          Welcome to the Scrum Purrfect, where every task is a step closer to
+          cat-ching your goals! Don't fur-get to check your daily tasks;
+          remember, a little progress each day adds up to big results. Let's
+          claw our way through those sprints together and make every milestone a
+          meow-mentous achievement!
+        </p>
         <p>
           We're feline excited to have you join our community of agile
           enthusiasts! At Scrum Purrfect, we're dedicated to providing you with
@@ -105,58 +115,16 @@ function Login() {
         </p>
         <p>Happy sprinting! 🚀</p>
       </div>{" "}
-      <button className="paw-button" onClick={handleLoginClick}>
-        Show Login Form
-      </button>
-    </div>
-  );
-}
-
-/* function Login() {
-  const [inputs, setInputs] = useState({});
-  const navigate = useNavigate();
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(inputs);
-    navigate("/home", { replace: true });
-  };
-
-  return (
-    <div className="Login" id="login-outer-container">
-      <div className="page-wrap" id="login-page-wrap">
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Enter your username:
-            <input
-              type="text"
-              name="username"
-              defaultValue={inputs.username || ""}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Enter your password:
-            <input
-              type="password"
-              name="password"
-              defaultValue={inputs.password || ""}
-              onChange={handleChange}
-            />
-          </label>
-          <input type="submit" value="Login" />
-        </form>
+      <div>
+        <button className="paw-button" onClick={handleLoginClick}>
+          Show Login Form
+        </button>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
 }
- */
+
 export default Login;

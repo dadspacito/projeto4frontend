@@ -1,6 +1,10 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,14 +22,28 @@ code {
   text-align: center;
   padding-bottom: 10px;
   padding-top: 10px;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+  flex: 1;
 }
 
 .welcome-logo {
   font-size: 1.3em;
   margin: 0 auto;
   padding: 20px;
-  opacity: 0.5;
-  background-image: url("logo1024.png");
+  width: 380px;
+  height: 380px;
+  border-radius: 300px;
+  background-image: url("/public/logo1024.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -36,14 +54,15 @@ code {
   margin: 0 auto;
   padding: 20px;
   text-align: left;
+  text-justify: justify;
 }
 
-/* Paw Button CSS */
+/* Purple Paw Button */
 .paw-button {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  background-color: #fbd400; /* Yellow */
+  background-color: #7e57c2; /* Purple */
   border: none;
   border-radius: 50px;
   color: #ffffff; /* White */
@@ -54,30 +73,41 @@ code {
   transition: background-color 0.3s ease;
 }
 
-.paw-button::before {
+.paw-button:before {
   content: "";
   position: absolute;
-  top: 40%;
-  left: 10%;
-  width: 30px;
-  height: 30px;
-  background-color: #fbd400; /* Yellow */
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #7e57c2; /* Purple */
   border-radius: 50%;
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%);
 }
 
-.paw-button::after {
+.paw-button:after {
   content: "";
   position: absolute;
-  top: 55%;
-  left: 20%;
+  top: 50%;
+  left: 50%;
   width: 20px;
   height: 20px;
   background-color: #ffffff; /* White */
   border-radius: 50%;
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%);
 }
 
 .paw-button:hover {
-  background-color: #f9a825; /* Darker Yellow */
+  background-color: #5e35b1; /* Darker Purple */
 }
+
+/*
+
+
+situaçao do vh meter footer no fim
+.Home {
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+ */

@@ -5,9 +5,8 @@ import App from "./App";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Activity from "./pages/Activity";
+import Scrumboard from "./pages/Scrumboard";
 import Profile from "./pages/Profile";
-import Footer from "./components/footer/Footer";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +15,7 @@ root.render(
       <Routes>
         <Route index element={<App />} />
         <Route path="home" element={<Home />} />
-        <Route path="activity" element={<Activity />} />
+        <Route path="scrumboard" element={<Scrumboard />} />
         <Route path="profile" element={<Profile />} />
         <Route path="login" element={<Login />} />
       </Routes>

@@ -6,16 +6,19 @@ import "../index.css";
 import { useNavigate } from "react-router-dom";
 function Home() {
   return (
-    <div className="Home" id="home-outer-container">
-      <Header />
-      <Sidebar
-        pageWrapId={"home-page-wrap"}
-        outerContainerId={"home-outer-container"}
-      />{" "}
-      <div className="page-wrap" id="home-page-wrap">
-        <h1>Home</h1>
-      </div>{" "}
-      <Footer />
+    <div>
+      <div className="Home" id="home-outer-container">
+        <Sidebar
+          pageWrapId={"home-page-wrap"}
+          outerContainerId={"home-outer-container"}
+        />{" "}
+        <Header />{" "}
+        <div className="page-wrap" id="home-page-wrap">
+          <h1>Home</h1>
+        </div>{" "}
+    
+      </div>
+     <Footer />
     </div>
   );
 }
