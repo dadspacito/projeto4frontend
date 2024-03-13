@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { slide as Menu } from "react-burger-menu";
 import "./Sidebar.css";
 import RegistryForm from "../forms/RegistryForm";
 
 export default (props) => {
-  const openRegistryForm = () => {
-    <RegistryForm />;
-  };
+  /*  const openRegistryForm = () => {
+    RegistryForm();
+  }; */
 
   return (
     <Menu>
@@ -19,9 +19,9 @@ export default (props) => {
       <a className="menu-item" href="/profile">
         My Paw-file{" "}
       </a>
-      <a className="menu-item" onClick={openRegistryForm()}>
+      {/*   <a className="menu-item" onClick={openRegistryForm}>
         New Purr-ticipant{" "}
-      </a>
+      </a> */}
     </Menu>
   );
 };

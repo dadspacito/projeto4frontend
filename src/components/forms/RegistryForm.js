@@ -35,11 +35,9 @@ function RegistryForm() {
     });
   };
 
-  return (
-    <div>
-      <button onClick={openForm()}>Abrir formulário</button>
-    </div>
-  );
+  useEffect = useEffect(() => {
+    openForm();
+  }, []);
 }
 
 export default RegistryForm;

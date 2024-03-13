@@ -34,17 +34,38 @@ function Header() {
 
   const username = userStore((state) => state.username);
   console.log(username);
+
+  // problema do CORS REVER
   // teste de foto
-  let usernameProfile = "https://cataas.com/cat";
+  //let usernameProfile = "https://cataas.com/cat";
+
+  // isto vai ser usado não aqui mas na parte de fazer get de foto de perfil ao criar ou editar
+  // fazer um pedido fetch a api para ir buscar a foto de perfil
+
+  async function fetchProfilePhoto() {
+    try {
+      const response = await fetch(
+        "https://api.thecatapi.com/v1/images/search"
+      );
+      if (response.ok) {
+        const data = await response.json();
+        // obter o atributo url da resposta como string
+
+        console.log(data.url);
+      } else {
+        throw new Error("Failed to fetch data");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  let foto = fetchProfilePhoto();
+  foto = "https://cdn2.thecatapi.com/images/MTgwNTYxMg.jpg";
 
   return (
     <div className="header">
       <div className="profile-icon">
-        <img
-          src={usernameProfile}
-          alt="Foto de perfil"
-          onClick={handleUserClick}
-        />
+        <img src={foto} alt="Foto de perfil" onClick={handleUserClick} />
         <span>{username}</span>
       </div>{" "}
       <LogoutButton />

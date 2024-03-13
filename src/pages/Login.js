@@ -4,14 +4,13 @@ import "../index.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/UserStore.js";
-
 import Swal from "sweetalert2";
 
 // Função que exibe um formulário de login usando SweetAlert2
 // O parâmetro `navigate` é uma função que pode ser usada para navegar para uma nova rota
 // O parâmetro `setUsername` é uma função que pode ser usada para atualizar o nome de utilizador no estado global
 
-export function showLoginForm(navigate, setUsername) {
+function showLoginForm(navigate, setUsername) {
   Swal.fire({
     title: "Login Form",
     html: `
@@ -56,25 +55,6 @@ export function showLoginForm(navigate, setUsername) {
 
 // E em seu componente React, você pode chamar essa função, por exemplo, em um manipulador de eventos:
 function Login() {
-  /* const [inputs, setInputs] = useState({});
-   const navigate = useNavigate();
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(inputs);
-    navigate("/home", { replace: true });
-  }; */
-
-  //const setUsername = UserStore((state) => state.setUsername);
-
-  // const [inputs, setInputs] = useState({});
   const navigate = useNavigate(); // `useNavigate` hook é definido aqui
   const setUsername = userStore((state) => state.setUsername);
 
