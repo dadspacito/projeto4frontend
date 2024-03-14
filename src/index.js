@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Scrumboard from "./pages/Scrumboard";
 import Profile from "./pages/Profile";
+import Users from "./pages/Users";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
       <Route path="scrumboard" element={<Scrumboard />} />
       <Route path="profile" element={<Profile />} />
       <Route path="login" element={<Login />} />
+      <Route path="users" element={<Users />} />
     </Routes>
   </Router>
 );

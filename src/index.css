@@ -22,8 +22,12 @@ code {
   text-align: center;
   padding-bottom: 10px;
   padding-top: 10px;
-  flex: 1;
+  display: flexbox;
+  /*  flex: 1;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; */
 }
 
 .outer-container {
@@ -101,6 +105,13 @@ code {
   background-color: #5e35b1; /* Darker Purple */
 }
 
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 /*
 
 
@@ -111,3 +122,27 @@ situaçao do vh meter footer no fim
   min-width: 100vw;
 }
  */
+
+.user {
+  background-color: lightblue;
+  color: white;
+  padding: 1rem;
+  height: 4rem;
+}
+.users-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .users-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .users-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -17,11 +17,14 @@ export default (props) => {
         Scratch Board
       </a>
       <a className="menu-item" href="/profile">
-        My Paw-file{" "}
+        My Paw-file«
       </a>
       {/*   <a className="menu-item" onClick={openRegistryForm}>
         New Purr-ticipant{" "}
       </a> */}
+      <a className="menu-item" href="/users">
+        The Feline Assembly
+      </a>
     </Menu>
   );
 };

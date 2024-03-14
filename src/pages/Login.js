@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/footer/Footer.js";
 import "../index.css";
 import { useState } from "react";
@@ -62,6 +62,14 @@ function Login() {
     showLoginForm(navigate, setUsername);
   }
 
+  // determinar um timeout de 2 segundos para disparar o use effect
+
+  useEffect(() => {
+    setTimeout(() => {
+      showLoginForm(navigate, setUsername);
+    }, 3000);
+  }, []);
+
   // const handleLoginClick = () => {
   //   showLoginForm(navigate);
   //   //setUsername(username);
@@ -99,9 +107,6 @@ function Login() {
         <button className="paw-button" onClick={handleLoginClick}>
           Show Login Form
         </button>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );

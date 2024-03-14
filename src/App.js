@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Login from "./pages/Login";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <h1>Welcome to Scrum Purrfect! 🐾</h1>
         <Login />
       </div>{" "}
+      <Footer />
     </div>
   );
 }

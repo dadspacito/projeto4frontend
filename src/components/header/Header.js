@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../../stores/UserStore.js";
@@ -13,6 +13,7 @@ function LogoutButton() {
   function handleLogoutClick() {
     // Handle the logout logic here
     // For example, you can clear the user state and navigate to the login page
+
     navigate("/", { replace: true });
     console.log("Logging out...");
   }
@@ -28,6 +29,11 @@ function Header() {
   const navigate = useNavigate();
 
   function handleUserClick() {
+    // Handle the user click logic here
+
+    // apagar os states
+    // For example, you can navigate to the profile page
+
     navigate("/profile", { replace: true });
     console.log("User clicked on the profile icon");
   }
@@ -49,9 +55,12 @@ function Header() {
       );
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
+
         // obter o atributo url da resposta como string
 
-        console.log(data.url);
+        console.log(JSON.stringify(data[0].url));
+        return data[0].url;
       } else {
         throw new Error("Failed to fetch data");
       }
@@ -59,8 +68,23 @@ function Header() {
       console.error(error);
     }
   }
-  let foto = fetchProfilePhoto();
-  foto = "https://cdn2.thecatapi.com/images/MTgwNTYxMg.jpg";
+  //let foto = "https://cdn2.thecatapi.com/images/MTgwNTYxMg.jpg";
+
+  // ativar
+
+  let [foto, setFoto] = useState(
+    "https://cdn2.thecatapi.com/images/MTgwNTYxMg.jpg"
+  );
+
+  const myfunction = async () => {
+    let ab = await fetchProfilePhoto();
+    console.log(ab);
+    setFoto(ab);
+  };
+
+  useEffect(() => {
+    myfunction();
+  }, []);
 
   return (
     <div className="header">
