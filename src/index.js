@@ -10,15 +10,13 @@ import Profile from "./pages/Profile";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route index element={<App />} />
-        <Route path="home" element={<Home />} />
-        <Route path="scrumboard" element={<Scrumboard />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="login" element={<Login />} />
-      </Routes>
-    </Router>
-  </React.StrictMode>
+  <Router>
+    <Routes>
+      <Route index element={<App />} />
+      <Route path="home" element={<Home />} />
+      <Route path="scrumboard" element={<Scrumboard />} />
+      <Route path="profile" element={<Profile />} />
+      <Route path="login" element={<Login />} />
+    </Routes>
+  </Router>
 );
