@@ -11,6 +11,8 @@ import Swal from "sweetalert2";
 // O parâmetro `setUsername` é uma função que pode ser usada para atualizar o nome de utilizador no estado global
 
 function showLoginForm(navigate, setUsername) {
+  /*  //////////////////// COMENTARIO INICIO
+  
   Swal.fire({
     title: "Login Form",
     html: `
@@ -37,20 +39,113 @@ function showLoginForm(navigate, setUsername) {
       }
       return { username, password };
     },
-  }).then((result) => {
-    if (result.isConfirmed) {
-      // ASSOCIAR O VALOR DE USERNAME AO USERSTATE
 
-      setUsername(result.value.username);
+    // fazer um pedido fetch para a api para verificar se o username e password estão corretos
+    }).then((result) => {
+    if (result.isConfirmed) {
+   
+
+      
+
 
       // Faça algo com os valores de username e password
       // const setUsername = userStore((state) => state.setUsername);
       // setUsername(result.value.username); // Atualize o nome de usuário usando setUsername
       // result.value.username = userStore((state) => state.setUsername);
+
+       // ASSOCIAR O VALOR DE USERNAME AO USERSTATE
+       setUsername(result.value.username);
+       // depois será com get mas por agora é assim
+
       navigate("/home", { replace: true });
       console.log(result.value);
     }
+    else {
+      // print the response error with swal
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+
+      navigate("/", { replace: true });
+    }
   });
+
+  //////////////////// COMENTARIO FIM */
+
+  Swal.fire({
+    title: "Login Form",
+    html: `
+      <input type="text" id="username" class="swal2-input" placeholder="Username">
+      <input type="password" id="password" class="swal2-input" placeholder="Password">
+    `,
+    confirmButtonText: "Sign in",
+    focusConfirm: false,
+    didOpen: () => {
+      const popup = Swal.getPopup();
+      const usernameInput = popup.querySelector("#username");
+      const passwordInput = popup.querySelector("#password");
+      usernameInput.onkeyup = (event) =>
+        event.key === "Enter" && Swal.clickConfirm();
+      passwordInput.onkeyup = (event) =>
+        event.key === "Enter" && Swal.clickConfirm();
+    },
+    preConfirm: () => {
+      const popup = Swal.getPopup();
+      const username = popup.querySelector("#username").value;
+      const password = popup.querySelector("#password").value;
+
+      if (!username || !password) {
+        Swal.showValidationMessage(`Please enter username and password`);
+        return false; // Interrompe o fluxo aqui caso username/password não sejam inseridos
+      }
+
+      Swal.showLoading(); // Mostra o loader enquanto o fetch é processado
+      return fetch("http://localhost:8080/scrumpurrfect/rest/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*",
+          username: username,
+          password: password,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // Processa os dados de resposta da API aqui
+          // Por exemplo, verificar se o login foi bem-sucedido baseado na resposta
+          return data; // Retorna os dados para serem usados no then() após o Swal.fire
+        })
+        .catch((error) => {
+          Swal.showValidationMessage(`Request failed: ${error}`);
+          return false; // Interrompe o fluxo em caso de erro na requisição
+        });
+    },
+  })
+    .then((result) => {
+      if (result.isConfirmed && result.value) {
+        // Aqui você lida com a resposta após o login bem-sucedido
+        setUsername(result.value.username); // Exemplo de atualização do estado do usuário
+        // fazer set do token, etc
+        navigate("/home", { replace: true });
+        console.log(result.value);
+      }
+    })
+    .catch((error) => {
+      // Aqui você pode tratar ou exibir erros que ocorreram no processo
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+      navigate("/", { replace: true });
+    });
 }
 
 // E em seu componente React, você pode chamar essa função, por exemplo, em um manipulador de eventos:
