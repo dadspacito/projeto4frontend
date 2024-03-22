@@ -1,79 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Footer from "../components/footer/Footer.js";
 import "../index.css";
 import { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/UserStore.js";
 import Swal from "sweetalert2";
 
-// Função que exibe um formulário de login usando SweetAlert2
-// O parâmetro `navigate` é uma função que pode ser usada para navegar para uma nova rota
-// O parâmetro `setUsername` é uma função que pode ser usada para atualizar o nome de utilizador no estado global
-
-function showLoginForm(navigate, setUsername) {
-  /*  //////////////////// COMENTARIO INICIO
-  
-  Swal.fire({
-    title: "Login Form",
-    html: `
-      <input type="text" id="username" class="swal2-input" placeholder="Username">
-      <input type="password" id="password" class="swal2-input" placeholder="Password">
-    `,
-    confirmButtonText: "Sign in",
-    focusConfirm: false,
-    didOpen: () => {
-      const popup = Swal.getPopup();
-      const usernameInput = popup.querySelector("#username");
-      const passwordInput = popup.querySelector("#password");
-      usernameInput.onkeyup = (event) =>
-        event.key === "Enter" && Swal.clickConfirm();
-      passwordInput.onkeyup = (event) =>
-        event.key === "Enter" && Swal.clickConfirm();
-    },
-    preConfirm: () => {
-      const popup = Swal.getPopup();
-      const username = popup.querySelector("#username").value;
-      const password = popup.querySelector("#password").value;
-      if (!username || !password) {
-        Swal.showValidationMessage(`Please enter username and password`);
-      }
-      return { username, password };
-    },
-
-    // fazer um pedido fetch para a api para verificar se o username e password estão corretos
-    }).then((result) => {
-    if (result.isConfirmed) {
-   
-
-      
-
-
-      // Faça algo com os valores de username e password
-      // const setUsername = userStore((state) => state.setUsername);
-      // setUsername(result.value.username); // Atualize o nome de usuário usando setUsername
-      // result.value.username = userStore((state) => state.setUsername);
-
-       // ASSOCIAR O VALOR DE USERNAME AO USERSTATE
-       setUsername(result.value.username);
-       // depois será com get mas por agora é assim
-
-      navigate("/home", { replace: true });
-      console.log(result.value);
-    }
-    else {
-      // print the response error with swal
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-      });
-
-      navigate("/", { replace: true });
-    }
-  });
-
-  //////////////////// COMENTARIO FIM */
-
+function showLoginForm(navigate, setUser, setToken) {
   Swal.fire({
     title: "Login Form",
     html: `
@@ -130,9 +64,37 @@ function showLoginForm(navigate, setUsername) {
   })
     .then((result) => {
       if (result.isConfirmed && result.value) {
+        // imprimir o resultado do fetch
+        /*   console.log(result.value);
+        console.log(result.value.username);
+        console.log(result.value.password);
         // Aqui você lida com a resposta após o login bem-sucedido
         setUsername(result.value.username); // Exemplo de atualização do estado do usuário
-        // fazer set do token, etc
+        // fazer set do token, etc */
+
+        // Atualiza o estado global com os detalhes do user
+        setUser({
+          username: result.value.username,
+          role: result.value.role,
+        });
+        setToken(result.value.token);
+
+        // Acessa o estado atual da store
+        const currentState = userStore.getState();
+
+        // Acessa e imprime o valor do token
+        console.log("Token:", currentState.token);
+
+        // Acessa e imprime os detalhes do usuário
+        console.log("User Details:");
+        console.log("Username:", currentState.userDetails.username);
+        console.log("First Name:", currentState.userDetails.firstname);
+        console.log("Last Name:", currentState.userDetails.lastname);
+        console.log("Email:", currentState.userDetails.email);
+        console.log("Photo URL:", currentState.userDetails.photoURL);
+        console.log("Phone:", currentState.userDetails.phone);
+        console.log("Role:", currentState.userDetails.role);
+
         navigate("/home", { replace: true });
         console.log(result.value);
       }
@@ -150,19 +112,21 @@ function showLoginForm(navigate, setUsername) {
 
 // E em seu componente React, você pode chamar essa função, por exemplo, em um manipulador de eventos:
 function Login() {
-  const navigate = useNavigate(); // `useNavigate` hook é definido aqui
-  const setUsername = userStore((state) => state.setUsername);
+  const navigate = useNavigate();
 
-  function handleLoginClick() {
-    showLoginForm(navigate, setUsername);
-  }
+  const setUser = userStore.getState().updateUserDetails;
+  const setToken = userStore.getState().setToken;
+
+  const handleLoginClick = () => {
+    showLoginForm(navigate, setUser, setToken);
+  };
 
   // determinar um timeout de 2 segundos para disparar o use effect
 
   useEffect(() => {
     setTimeout(() => {
-      showLoginForm(navigate, setUsername);
-    }, 3000);
+      showLoginForm(navigate, setUser, setToken);
+    }, 5000);
   }, []);
 
   // const handleLoginClick = () => {
@@ -171,6 +135,7 @@ function Login() {
 
   return (
     <div className="login">
+      <h1>Welcome to Scrum Purrfect! 🐾</h1>
       <div className="welcome-logo"></div>
       <div className="welcome-message">
         <p>
@@ -200,7 +165,7 @@ function Login() {
       </div>{" "}
       <div>
         <button className="paw-button" onClick={handleLoginClick}>
-          Show Login Form
+          Show Login Form 🐾
         </button>
       </div>
     </div>

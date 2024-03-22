@@ -128,7 +128,9 @@ situaçao do vh meter footer no fim
   color: white;
   padding: 1rem;
   height: 4rem;
+  cursor: pointer;
 }
+
 .users-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -145,4 +147,51 @@ situaçao do vh meter footer no fim
   .users-container {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* formulario */
+
+.formStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+.formStyle input,
+.formStyle button {
+  width: 90%;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 25px;
+  border: none;
+  background: #f0f0f0;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.formStyle input:focus,
+.formStyle button:hover {
+  background: #e0e0e0;
+}
+
+.formStyle button {
+  background: linear-gradient(45deg, #6d5bba, #8d58bf);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.formStyle button:active {
+  transform: scale(0.98);
 }
