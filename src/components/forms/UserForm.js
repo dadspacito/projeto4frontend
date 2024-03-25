@@ -52,10 +52,15 @@ const UserForm = () => {
         <ProfilePhoto />
       </div>
       <form className="formStyle" onSubmit={handleSubmit}>
-        {userTargetDetails.username === "" && userDetails.role === "po" && (
+        {userTargetDetails.username === "" && userDetails.role === "po" ? (
           <label>
             Username:
             <input type="text" value="Choose wise, Code Whiskerer" />
+          </label>
+        ) : (
+          <label>
+            Username:
+            <input type="placeholder" value={userTargetDetails.username} />
           </label>
         )}
         <label> First Name: </label>
