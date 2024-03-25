@@ -4,6 +4,7 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import { userStore } from "../stores/UserStore";
 import "../index.css";
+import UserForm from "../components/forms/UserForm";
 
 function Home() {
   useEffect(() => {
@@ -47,7 +48,7 @@ function Home() {
       }
     }
     fetchData();
-  }, []);
+  }, [userStore.getState().token, userStore.getState().userDetails]);
 
   return (
     <div className="Home" id="home-outer-container">

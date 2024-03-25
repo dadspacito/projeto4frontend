@@ -31,9 +31,8 @@ function LogoutButton() {
           title: "See you soon," + user.userDetails.username + "!",
           showConfirmButton: false,
           timer: 1500,
-          onClose: () => {
+          didDestroy: () => {
             sessionStorage.clear();
-            console.log("ok...");
             navigate("/", { replace: true });
             console.log("deivia ter mudado..");
           },

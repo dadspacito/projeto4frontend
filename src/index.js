@@ -1,28 +1,34 @@
 import React from "react";
+import { useEffect } from "react";
+import {
+  Navigate,
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import App from "./App";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { userStore } from "./stores/UserStore";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Scrumboard from "./pages/Scrumboard";
 import Profile from "./pages/Profile";
 import Users from "./pages/Users";
-import { userStore } from "./stores/UserStore";
 import Swal from "sweetalert2";
-import { useEffect } from "react";
+import "./index.css";
 
 const PrivateRoute = ({ children }) => {
   const isLoggedIn = userStore.getState().isLoggedIn();
+
+  // comentar se pretendo que o alerta não apareça, para que o utilizador não saiba que o path existe
 
   useEffect(() => {
     if (!isLoggedIn) {
       Swal.fire({
         icon: "error",
         title: "You must be logged in to access this page!",
-        showConfirmButton: false,
-        timer: 1000,
+        showConfirmButton: true,
+        timer: 3000,
       });
     }
   }, [isLoggedIn]);
@@ -33,6 +39,8 @@ const PrivateRoute = ({ children }) => {
 const PrivateProductOwnerRoute = ({ children }) => {
   const isLoggedIn = userStore.getState().isLoggedIn();
   const role = userStore.getState().userDetails.role;
+
+  // comentar se pretendo que o alerta não apareça, para que o utilizador !productOwner não saiba que o path existe
 
   useEffect(() => {
     if (isLoggedIn && role !== "po") {
@@ -48,7 +56,7 @@ const PrivateProductOwnerRoute = ({ children }) => {
   return isLoggedIn && role === "po" ? (
     children
   ) : (
-    <Navigate to="/home" replace />
+    <Navigate to="/login" replace />
   );
 };
 
@@ -57,7 +65,11 @@ root.render(
   <Router>
     <Routes>
       <Route index element={<App />} />
+
+      <Route path="*" element={<Navigate to="/login" replace />} />
+
       <Route path="login" element={<Login />} />
+
       <Route
         path="home"
         element={

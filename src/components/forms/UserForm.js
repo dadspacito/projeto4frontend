@@ -98,43 +98,15 @@ const UserForm = () => {
             })
           }
         />
-        <label>
-          <select>
-            <option value="Ford">Ford</option>
-            <option value="Volvo" selected>
-              Volvo
-            </option>
-            <option value="Fiat">Fiat</option>
-          </select>
-          <input
-            type="radio"
-            name="role"
-            value="dev"
-            style={{ transform: "scale(1)", margin: "5px" }}
-          />
-        </label>
-        <label>
-          Scrum Master: "Purr-ject Herder"
-          <input type="radio" name="role" value="sm" />
-        </label>
-        <label>
-          Product Owner: "Feline Visionary"
-          <input type="radio" name="role" value="po" />
-        </label>
 
-        {userDetails.role === "p" ? (
-          <input
-            type="text"
-            value={userTargetDetails.role}
-            onChange={(e) =>
-              userStore.getState().updateUserTargetDetails({
-                role: e.target.value,
-              })
-            }
-          />
-        ) : (
-          <input type="placeholder" value={userTargetDetails.role} />
-        )}
+        <label>Role:</label>
+
+        <select value={userTargetDetails.role}>
+          <option value="dev">"Code Whiskerer" - Developer</option>
+          <option value="sm">"Purrr-ject Herder" - Scrum Master</option>
+          <option value="po">"Feline Visionary" - Product Owner</option>
+        </select>
+        <br />
 
         <input type="submit" value="Update profile" />
       </form>

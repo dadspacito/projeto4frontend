@@ -25,7 +25,7 @@ function UsersList() {
   return (
     <ul>
       {data.map((user) => (
-        <li key={user.id}>{user.username}</li> // Ajuste de acordo com a estrutura do seu objeto user
+        <li key={user.id}>{user.username}</li> //
       ))}
     </ul>
   );

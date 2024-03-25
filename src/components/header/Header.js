@@ -37,6 +37,9 @@ function Header() {
   console.log(username);
 
   const photoURL = userStore.getState().userDetails.photoURL;
+  useEffect(() => {
+    const photoURL = userStore.getState().userDetails.photoURL;
+  }, [photoURL]);
 
   return (
     <div className="header">

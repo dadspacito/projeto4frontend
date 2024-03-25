@@ -73,6 +73,7 @@ import UsersList from "../components/userslist/Userlist";
 import useFetch from "react-fetch-hook";
 import { useNavigate } from "react-router-dom";
 import { userStore } from "../stores/UserStore";
+import Swal from "sweetalert2";
 
 function Users() {
   const token = userStore((state) => state.token); // Access the token from the store
@@ -92,7 +93,8 @@ function Users() {
     },
   });
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) return Swal.showLoading();
+
   if (error) return <div>Error: {error.message}</div>;
 
   const editProfile = async (username) => {
@@ -117,7 +119,6 @@ function Users() {
     navigate("/profile");
   };
 
-  // Map each user to a link to their profile
   const userElements = users?.map((user) => (
     <div
       className="user"
@@ -148,9 +149,16 @@ function Users() {
       />
       <Header />
       <div className="page-wrap" id="users-page-wrap">
-        <UsersList />
+        {
+          /* <UsersList /> */
+          // implementar a logica de userElements na folha de UsersList.js
+        }
         <h1>The Feline Assembly</h1>
-        <div className="users-container">{userElements}</div>
+        {isLoading ? (
+          Swal.isLoading
+        ) : (
+          <div className="users-container">{userElements}</div>
+        )}
       </div>
       <Footer />
     </div>
